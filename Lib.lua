@@ -924,9 +924,6 @@ function Kavo.CreateLib(kavName, themeList)
                         hovering = false
                     end
                 end)
-		TextBox.Changed:Connect(function()
-			callback(TextBox.Text)
-		end)
                 TextBox.FocusLost:Connect(function(EnterPressed)
                     if focusing then
                         for i,v in next, infoContainer:GetChildren() do
