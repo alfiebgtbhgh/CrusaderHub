@@ -21,7 +21,7 @@
 
 ]]
 
-print("loaded a")
+print("loaded b")
 
 -- [ Initialize ] --
 -- Destroy Previous UI's --
@@ -627,8 +627,8 @@ local function CreateOptions(Frame)
                     local Success, Error = pcall(Properties.Function, Properties.Value)
                     assert(Luminosity.Settings.Debug == false or Success, Error)
                 end)
+									Callback(Container.TextBox.Input.Text)	
                 Container.TextBox.Input.Text = ""
-Callback(Container.TextBox.Input.Text)	
             end
         end)
 
