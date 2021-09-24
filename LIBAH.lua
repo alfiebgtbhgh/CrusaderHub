@@ -21,7 +21,7 @@
 
 ]]
 
-print("loaded b")
+print("loaded c")
 
 -- [ Initialize ] --
 -- Destroy Previous UI's --
@@ -613,7 +613,9 @@ local function CreateOptions(Frame)
         Container.TextBox.Input:GetPropertyChangedSignal("Text"):Connect(function()
             local TextLength = Container.TextBox.Input.TextBounds.X
             local MaxSize = (Container.AbsoluteSize.X - Container.Title.TextBounds.X) - 40
-		Callback(Container.TextBox.Input.Text)					
+		if Container.TextBox.Input.Text ~= "" then
+								Callback(Container.TextBox.Input.Text)			
+									end
             if Container.TextBox.Input.TextTruncate == Enum.TextTruncate.None then
                 Utility.Tween(Container.TextBox, TweenInfo.new(0.1), {Size = UDim2.new(0.2, math.clamp(TextLength - (Container.AbsoluteSize.X * 0.2) + 15, 25, MaxSize), 0, 20)}):Play()
             end
