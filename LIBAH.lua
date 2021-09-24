@@ -21,6 +21,8 @@
 
 ]]
 
+print("loaded a")
+
 -- [ Initialize ] --
 -- Destroy Previous UI's --
 if _G.Luminosity_Loaded and _G.Luminosity then
@@ -213,9 +215,6 @@ local Luminosity = {
         IgnoreGuiInset = true,
         ResetOnSpawn = false
     });
-if syn.protect_gui then
-	syn.protect_gui(ScreenGui)
-end
     Settings = {
         Name = "Template";
         Debug = false;
@@ -614,6 +613,7 @@ local function CreateOptions(Frame)
         Container.TextBox.Input:GetPropertyChangedSignal("Text"):Connect(function()
             local TextLength = Container.TextBox.Input.TextBounds.X
             local MaxSize = (Container.AbsoluteSize.X - Container.Title.TextBounds.X) - 40
+		Callback(Container.TextBox.Input.Text)					
             if Container.TextBox.Input.TextTruncate == Enum.TextTruncate.None then
                 Utility.Tween(Container.TextBox, TweenInfo.new(0.1), {Size = UDim2.new(0.2, math.clamp(TextLength - (Container.AbsoluteSize.X * 0.2) + 15, 25, MaxSize), 0, 20)}):Play()
             end
@@ -628,6 +628,7 @@ local function CreateOptions(Frame)
                     assert(Luminosity.Settings.Debug == false or Success, Error)
                 end)
                 Container.TextBox.Input.Text = ""
+Callback(Container.TextBox.Input.Text)	
             end
         end)
 
